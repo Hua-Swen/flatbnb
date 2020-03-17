@@ -1,7 +1,9 @@
-<p><%= @booking.date_check_out %></p>
-<p><%= @booking.date_check_in %></p>
+<p>number of nights: <%= (@booking.date_check_out - @booking.date_check_in).to_i %></p>
+<p>check out date: <%= @booking.date_check_out %></p>
+<p>check in date: <%= @booking.date_check_in %></p>
+<p>total cost = <%= @booking.flat.price_per_night * (@booking.date_check_out - @booking.date_check_in).to_i %></p>
 
-<p><%= @booking.number_of_guests %></p>
-<p><%= @booking.user.email %></p>
+<p>number of guests: <%= @booking.number_of_guests %></p>
+<p>user: <%= @booking.user.email %></p>
 
 

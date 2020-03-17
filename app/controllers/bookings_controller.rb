@@ -19,8 +19,15 @@ class BookingsController < ApplicationController
 
     @booking.flat = @flat
     @booking.user = current_user
-    @booking.save
-    raise
+
+    respond_to do |format|
+      if @booking.save
+        format.html { redirect_to flat_booking_path(@flat, @booking), notice: "Successfully created booking"}
+        format.json {}
+      else
+        format.html { render :new }
+      end
+    end
 
   end
 
