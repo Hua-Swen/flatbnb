@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @flat = Flat.find(params[:flat_id])
     @review.flat = @flat
+    @review.user = current_user
     @review.save
     if @review.save
       redirect_to flat_path(@flat)
@@ -19,7 +20,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:comment, :rating, :flat_id, :traveller_id)
+    params.require(:review).permit(:comment, :rating, :flat_id)
   end
 end
 
