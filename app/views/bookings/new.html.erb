@@ -1,0 +1,10 @@
+<%= simple_form_for bookings_new_path do |f| %>
+  <%= f.input :number_of_guest %>
+  <%= f.input :date_check_in, as: :date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year - 12,
+                              order: [:day, :month, :year] %>
+  <%= f.input :date_check_out, as: :date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year - 12,
+                              order: [:day, :month, :year] %>
+  <%= f.button :submit %>
+<% end %>
