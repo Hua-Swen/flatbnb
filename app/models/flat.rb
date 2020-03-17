@@ -9,10 +9,9 @@ class Flat < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :number_of_guests, presence: true
-  validates :date_check_in, presence: true
-  validates :date_check_out, presence: true
   validates :price_per_night, presence: true
   validates :address_name, presence: true
   validates :host, presence: true
   validates :city, presence: true
 end
+
