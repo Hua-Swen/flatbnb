@@ -14,3 +14,4 @@ class Flat < ApplicationRecord
   validates :host, presence: true
   validates :city, presence: true
 end
+
