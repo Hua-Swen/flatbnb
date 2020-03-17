@@ -60,8 +60,8 @@ amenities.each do |new_amenity|
 end
 
 puts "creating user"
-user = User.new(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                password: Faker::Crypto.md5)
+user = User.new(email: "test@test.com", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+                password: 123456)
 user.save
 
 
