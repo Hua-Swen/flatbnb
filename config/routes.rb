@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   get 'bookings/new'
   get 'bookings/create'
-  devise_for :hosts
-  devise_for :travellers
+  devise_for :user
   root to: 'pages#home'
   resources :flats do
     resources :bookings, only: [:new, :create]

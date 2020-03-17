@@ -8,7 +8,7 @@ class CreateFlats < ActiveRecord::Migration[5.2]
       t.integer :price_per_night
       t.string :type_of_flat
       t.references :city, foreign_key: true
-      t.references :host, foreign_key: true
+      t.references :user, foreign_key: true
       t.string :lat
       t.string :long
       t.date :date_check_in

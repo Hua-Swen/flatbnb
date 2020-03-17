@@ -1,6 +1,6 @@
 class Flat < ApplicationRecord
   belongs_to :city
-  belongs_to :host
+  belongs_to :user
   has_many :amenities_flats
   has_many :amenities, through: :amenities_flats
   has_many :bookings
@@ -11,7 +11,7 @@ class Flat < ApplicationRecord
   validates :number_of_guests, presence: true
   validates :price_per_night, presence: true
   validates :address_name, presence: true
-  validates :host, presence: true
+  validates :user, presence: true
   validates :city, presence: true
 end
 

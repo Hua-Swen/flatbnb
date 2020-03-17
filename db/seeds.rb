@@ -11,7 +11,7 @@ require 'pry-byebug'
 puts "destroying all databases"
 Amenity.destroy_all
 Flat.destroy_all
-Host.destroy_all
+User.destroy_all
 City.destroy_all
 
 
@@ -59,10 +59,10 @@ amenities.each do |new_amenity|
   amenity.save
 end
 
-puts "creating host"
-host = Host.new(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+puts "creating user"
+user = User.new(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                 password: Faker::Crypto.md5)
-host.save
+user.save
 
 
 puts " creating flat"
@@ -75,12 +75,10 @@ flat = Flat.new(name: "orchard road",
         )
 
 
-  flat.host = host
-  flat.city = City.last
-  puts flat
-  flat
+flat.user = user
+flat.city = City.last
 
-  flat.save
-  puts "end of seeding"
+flat.save
+puts "end of seeding"
 
 
