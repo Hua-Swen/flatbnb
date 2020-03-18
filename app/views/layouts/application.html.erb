@@ -29,9 +29,11 @@
       <div class="footer d-flex justify-content-around">
         <div class="footer-links ">
           <a href="#"><i class="fas fa-user-circle"></i></a>
-          <a href="#"><i class="fas fa-suitcase-rolling"></i></a>
+          <%= link_to flats_path do %>
+            <i class="fas fa-suitcase-rolling"></i>
+          <% end %>
           <%= link_to new_user_session_path do %>
-          <i class="fas fa-sign-in-alt"></i>
+            <i class="fas fa-sign-in-alt"></i>
           <% end %>
         </div>
       </div>
