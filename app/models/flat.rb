@@ -5,6 +5,7 @@ class Flat < ApplicationRecord
   has_many :amenities, through: :amenities_flats
   has_many :bookings
   has_many :reviews
+  has_many_attached :photos
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true

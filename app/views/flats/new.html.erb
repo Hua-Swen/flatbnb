@@ -5,7 +5,7 @@
   <%= f.input :price_per_night %>
   <%= f.input :number_of_guests %>
   <%= f.input :address_name %>
-  <%= f.input :description %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <!-- got issues with the drop down selection for amenitites, cannot choose more than one amenity -->
   <%= f.association :amenities, collection: Amenity.all.map {|u| [u.name, u.id]}, prompt: "Amenities list" %>
   <%= f.button :submit %>
