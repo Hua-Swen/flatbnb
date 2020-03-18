@@ -1,6 +1,33 @@
-<h1>All flats</h1>
-<% @flats.each do |flat| %>
-<%= link_to flat.name, flat_path(flat) %>
-<% end %>
+<div class="title-welcome">
+<h2>Welcome to FlatBnB</h2>
+</div>
 
-<%= link_to "New flat", new_flat_path %>
+
+<div class="welcome-text">
+  <p>" Top-rated places to stay. Explore some of the best-reviewed stays in the world."</p>
+</div>
+
+
+<!-- <h1>  cl_image_tag("k8ncsz9ntoptdbtvhabp",
+      width: 400, height: 300, crop: :fill) %></h1>-->
+
+<div class="card-trip">
+    <% @flats.each do |flat| %>
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <div class="card-trip-infos">
+        <div>
+          <h2><%= link_to flat.name.capitalize, flat_path(flat)%></h2>
+          <p><%= flat.description.capitalize %></p>
+        </div>
+      <p class="card-trip-pricing"><%=flat.price_per_night%> $ / night </p>
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" class="card-trip-user avatar-card" />
+    </div>
+  <% end %>
+</div>
+
+
+<div class="new-flat">
+  <%= link_to new_flat_path do %>
+  <div class="btn btn-primary ">New flat</div>
+  <% end %>
+</div>
