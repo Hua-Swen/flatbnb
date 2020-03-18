@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'user/show'
   devise_for :user
   root to: 'flats#index'
   resources :flats do
