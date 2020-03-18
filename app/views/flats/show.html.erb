@@ -42,7 +42,6 @@
 
   <p>Address: <%= @flat.address_name %></p>
   <p>Host: <%= @flat.user.first_name %> <%= @flat.user.last_name %></p>
-  <p>City: <%= @flat.city.name %></p>
     <ul>
         <% @flat.reviews.each do |review|  %>
         <li> <%= review.comment %>  |  <%= review.rating %></li>
