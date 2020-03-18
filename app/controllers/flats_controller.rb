@@ -11,10 +11,18 @@ class FlatsController < ApplicationController
   def new
     @flat = Flat.new
     @amenities = Amenity.all
+    @cities = City.all
   end
 
   def create
+    # @city = City.find_by(params[:city_id])
+    @amenities_id = params[:flat][:amenity_ids]
+    @amenities_id.map! do |amenity_id|
+      Amenity.find(amenity_id.to_i)
+    end
     @flat = Flat.new(params_flat)
+    @flat.amenities = @amenities_id
+    @flat.user = current_user
     respond_to do |format|
       if @flat.save
         format.html { redirect_to flat_path(@flat), notice: "Successfully created flat"}
@@ -47,7 +55,7 @@ class FlatsController < ApplicationController
   private
 
   def params_flat
-    params.require(:flat).permit(:name, :description, :number_of_guests, :price_per_night, :date_check_in, :date_check_out, :address_name, :host, :city, :amenity_id, photos: [])
+    params.require(:flat).permit(:name, :city_id, :description, :number_of_guests, :price_per_night, :date_check_in, :date_check_out, :address_name, :host, :city, :amenity_ids, photos: [])
   end
 
   def find_flat
