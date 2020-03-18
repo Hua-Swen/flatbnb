@@ -15,13 +15,27 @@
     <p class="alert"><%= alert %></p> -->
     <%= yield %>
 
-    <div class="footer d-flex justify-content-around">
-      <div class="footer-links ">
-        <a href="#"><i class="fas fa-user-circle"></i></a>
-        <a href="#"><i class="fas fa-suitcase-rolling"></i></a>
-        <a href="#"><i class="fas fa-search"></i></a>
+    <% if user_signed_in? %>
+      <div class="footer d-flex justify-content-around">
+        <div class="footer-links ">
+          <a href="#"><i class="fas fa-user-circle"></i></a>
+          <a href="#"><i class="fas fa-suitcase-rolling"></i></a>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt"></i>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% else %>
+      <div class="footer d-flex justify-content-around">
+        <div class="footer-links ">
+          <a href="#"><i class="fas fa-user-circle"></i></a>
+          <a href="#"><i class="fas fa-suitcase-rolling"></i></a>
+          <%= link_to new_user_session_path do %>
+          <i class="fas fa-sign-in-alt"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
