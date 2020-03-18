@@ -25,7 +25,7 @@
     <p><%= @flat.description %></p>
   </div>
 
-  <div class="amenities">
+  <div class="sections">
     <div class="d-flex">
       <i class="fas fa-tools amenity-logo"></i><h1 class="flat-name-text">Amenities</h1>
     </div>
@@ -36,23 +36,46 @@
     </div>
   </div>
 
-  <div>
-    <h1></h1>
+  <div class="sections">
+    <div class="d-flex">
+      <i class="fas fa-map-marked-alt amenity-logo"></i><h1 class="flat-name-text">Location</h1>
+    </div>
+    <p class="flat-text-info"><%= @flat.address_name %></p>
+    <div class="map"></div>
+    <div>
+
+    </div>
   </div>
 
-  <p>Address: <%= @flat.address_name %></p>
-  <p>Host: <%= @flat.user.first_name %> <%= @flat.user.last_name %></p>
-    <ul>
+   <div class="sections">
+    <div class="d-flex">
+      <i class="fas fa-address-card amenity-logo"></i><h1 class="flat-name-text">Your Host</h1>
+    </div>
+      <div class="d-flex">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+        <p class="host-name"><%= @flat.user.first_name.capitalize %> <%= @flat.user.last_name.capitalize %></p>
+      </div>
+  </div>
+
+   <div class="sections">
+    <div class="d-flex">
+      <i class="fas fa-user-edit amenity-logo"></i><h1 class="flat-name-text">Reviews</h1>
+      <%= link_to new_flat_review_path(@flat, @review) do %>
+        <p class="btn btn-primary review-buton">Add Review</i></p>
+      <% end %>
+    </div>
+    <div class="d-flex">
+      <div class="d-flex flex-column-reverse">
         <% @flat.reviews.each do |review|  %>
-        <li> <%= review.comment %>  |  <%= review.rating %></li>
+          <div>
+            <div class="review"><%= review.comment %></div>
+            <div><%= review.rating %></div>
+          </div>
         <% end %>
-    </ul>
+      </div>
+    </div>
+  </div>
 
-
-  <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-  <%= link_to new_flat_review_path(@flat, @review) do %>
-    <p class="btn btn-primary reserve-buton">Add Review</i></p>
-  <% end %>
 
   <div class="space-for-bar"></div>
   <div class="header d-flex justify-content-around fixed-bottom p-2">

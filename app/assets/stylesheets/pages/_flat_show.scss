@@ -1,6 +1,7 @@
 .flat-image {
   width: 100vw;
   height: 60vh;
+  display: block;
 }
 
 .header {
@@ -36,7 +37,7 @@
   font-weight: bold;
   color: #485252;
   margin-right: 15px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .description {
@@ -110,9 +111,8 @@
   margin-top: 10px;
 }
 
-.amenities {
+.sections {
   border-top: solid;
-  border-bottom: solid;
   border-width: 1px;
   border-color: #ebebeb;
   padding-bottom: 10px;
@@ -123,4 +123,30 @@
   margin-top: 15px;
   margin-right: 15px;
   color: #7fc4d6;
+}
+
+.map {
+  background: green;
+  padding: 100px;
+  margin: 10px;
+  margin-left: 0px;
+  border-radius: 3px;
+}
+
+.review {
+  margin-top: 10px;
+}
+
+.host-name {
+  margin: 15px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #485252;
+}
+
+.review-buton {
+  margin-top: 15px;
+  margin-left: 90px;
+  font-size: 10px;
+  font-weight: bold;
 }
