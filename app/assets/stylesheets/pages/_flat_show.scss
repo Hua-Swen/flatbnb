@@ -22,6 +22,7 @@
   font-size: 32px;
   font-weight: bold;
   color: #485252;
+  margin-top: 10px;
 }
 
 .flat-text {
@@ -44,6 +45,7 @@
 }
 
 .pernight {
+  font-size: 25px;
   font-weight: bold;
   margin-left: 15px;
   margin-top: 15px;
@@ -60,10 +62,65 @@
 }
 
 .reserve-buton {
-  margin-left: 50px;
   color: white;
   font-weight: bold;
   margin-left: 15px;
   margin-top: 15px;
-  margin-bottom: 15px;
+  margin-right: 15px;
+}
+
+.no-left {
+  font-weight: lighter;
+  font-size: 15px;
+  color: #485252;
+  margin-top: 25px;
+  margin-bottom: 5px;
+  margin-left: 2px;
+}
+
+.avatar {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.avatar-large {
+  width: 56px;
+  border-radius: 50%;
+}
+
+.avatar-bordered {
+  width: 40px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+}
+
+.avatar-square {
+  width: 40px;
+  border-radius: 0px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+}
+
+.space-for-bar {
+  margin-bottom: 45px;
+}
+
+.amenity {
+  margin-top: 10px;
+}
+
+.amenities {
+  border-top: solid;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: #ebebeb;
+  padding-bottom: 10px;
+}
+
+.amenity-logo {
+  font-size: 25px;
+  margin-top: 15px;
+  margin-right: 15px;
+  color: #7fc4d6;
 }
