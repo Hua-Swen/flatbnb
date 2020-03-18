@@ -1,41 +1,68 @@
-<div class="header fixed-top">
-  <p class="back-buton"><i class="fas fa-arrow-left"></i></p>
-</div>
-<img class="flat-image" src="https://images.unsplash.com/photo-1565330502541-4937be8552e3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="">
+  <div class="header fixed-top">
+    <%= link_to flats_path do %>
+      <p class="back-buton"><i class="fas fa-arrow-left"></i></p>
+    <% end %>
+  </div>
+  <%= cl_image_tag @flat.photos[0].key, class: "flat-image" %>
+  <!-- <img class="flat-image" src="https://images.unsplash.com/photo-1565330502541-4937be8552e3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt=""> -->
+<div class="container">
+  <div class="flat-name">
+    <h1 class="flat-name-text"><%= @flat.name.capitalize %></h1>
+  </div>
 
-<div class="container flat-name">
-  <h1 class="flat-name-text"><%= @flat.name.capitalize %></h1>
-</div>
+  <div class="flat-name">
+    <p class="flat-text">Entire House in <%= @flat.city.name %></p>
+  </div>
 
-<div class="container flat-name">
-  <p class="flat-text">Entire House in <%= @flat.city.name %></p>
-</div>
+  <div class="d-flex justify-content-start">
+    <p class="flat-text-info"><%= @flat.number_of_guests %> guests</p>
+    <p class="flat-text-info"><%= @flat.type_of_flat %></p>
+    <p class="flat-text-info">1 bed</p>
+    <p class="flat-text-info">1 bedroom</p>
+  </div>
 
-<div class="container d-flex justify-content-start">
-  <p class="flat-text-info"><%= @flat.number_of_guests %> guests</p>
-  <p class="flat-text-info">studio</p>
-  <p class="flat-text-info">1 bed</p>
-  <p class="flat-text-info">1 bedroom</p>
-</div>
+  <div class="description">
+    <p><%= @flat.description %></p>
+  </div>
 
-<div class="container description">
-  <p><%= @flat.description %></p>
-</div>
-
-<p>Address: <%= @flat.address_name %></p>
-<p>Host: <%= @flat.user.first_name %> <%= @flat.user.last_name %></p>
-<p>City: <%= @flat.city.name %></p>
-  <ul>
-      <% @flat.reviews.each do |review|  %>
-      <li> <%= review.comment %>  |  <%= review.rating %></li>
+  <div class="amenities">
+    <div class="d-flex">
+      <i class="fas fa-tools amenity-logo"></i><h1 class="flat-name-text">Amenities</h1>
+    </div>
+    <div class="row ">
+      <% @flat.amenities.each do |amenity| %>
+        <div class="col-6 amenity"><%= amenity.name %> </div>
       <% end %>
+    </div>
+  </div>
+
+  <div>
+    <h1></h1>
+  </div>
+
+  <p>Address: <%= @flat.address_name %></p>
+  <p>Host: <%= @flat.user.first_name %> <%= @flat.user.last_name %></p>
+    <ul>
+        <% @flat.reviews.each do |review|  %>
+        <li> <%= review.comment %>  |  <%= review.rating %></li>
+        <% end %>
     </ul>
 
-<div class="header fixed-bottom">
-  <div class="container d-flex justify-content-start">
-    <p class="pernight"><%= @flat.price_per_night %></p><p class="pernighttail"> / night</p>
-    <p class="btn btn-primary reserve-buton">Reserve</i></p>
+
+  <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+  <%= link_to new_flat_review_path(@flat, @review) do %>
+    <p class="btn btn-primary reserve-buton">Add Review</i></p>
+  <% end %>
+
+  <div class="space-for-bar"></div>
+  <div class="header d-flex justify-content-around fixed-bottom p-2">
+    <div class="container d-flex reserve-info">
+      <p class="pernight">$<%=@flat.price_per_night %></p>
+      <p class="no-left"> / night</p>
+    </div>
+    <%= link_to new_flat_booking_path(@flat, @booking) do %>
+      <p class="btn btn-primary reserve-buton">Reserve</i></p>
+    <% end %>
   </div>
 </div>
-
 
