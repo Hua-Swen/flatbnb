@@ -1,10 +1,53 @@
-<%= simple_form_for ([@flat, @booking]) do |f| %>
-  <%= f.input :number_of_guests %>
-  <%= f.input :date_check_in, as: :date, start_year: Date.today.year + 2,
-                              end_year: Date.today.year,
-                              order: [:day, :month, :year] %>
-  <%= f.input :date_check_out, as: :date, start_year: Date.today.year + 2,
-                              end_year: Date.today.year,
-                              order: [:day, :month, :year] %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container background">
+  <div class="container Header-Border"><h1 class="Review-House-Rules"><strong>Book Your Flat</strong></h1></div>
+  <div class="container">
+    <%= simple_form_for ([@flat, @booking]) do |f| %>
+      <%= f.input :number_of_guests %>
+      <%= f.input :date_check_in, as: :date, start_year: Date.today.year + 2,
+                                  end_year: Date.today.year,
+                                  order: [:day, :month, :year] %>
+      <%= f.input :date_check_out, as: :date, start_year: Date.today.year + 2,
+                                  end_year: Date.today.year,
+                                  order: [:day, :month, :year] %>
+      <%= f.button :submit, class: "btn btn-primary font-weight-bold" %>
+    <% end %>
+  </div>
+  <!-- Review House Rules Header -->
+  <div class="booking-header"></div>
+  <div class="container"><h1 class="Review-House-Rules"><strong>Review House Rules</strong></h1></div>
+
+  <div class="container d-flex justify-content-between mt-3">
+    <h2 class="thingstokeepinmind">Check-in time</h2>
+    <p>13:00 - 22:00</p>
+  </div>
+
+  <div class="container d-flex justify-content-between">
+    <h2 class="thingstokeepinmind">Check-out time</h2>
+    <p>10:00</p>
+  </div>
+
+  <div class="container-sm booking-things mb-3">
+    <h2 class="thingstokeepinmind">Things to keep in mind</h2>
+  </div>
+
+  <div class="container d-flex flex-row">
+    <p class="flex-sm-column mr-3"><i class="fas fa-child"></i></p>
+    <p class="flex-sm-column">Not suitable for children and infants</p>
+  </div>
+
+  <div class="container d-flex flex-row">
+    <p class="flex-sm-column mr-2"><i class="fas fa-dog"></i></p>
+    <p class="flex-sm-column">No pets</p>
+  </div>
+
+  <div class="container d-flex flex-row">
+    <p class="flex-sm-column mr-2"><i class="fas fa-gifts"></i></p>
+    <p class="flex-sm-column">No parties or events</p>
+  </div>
+
+  <div class="container d-flex flex-row">
+    <p class="flex-sm-column mr-2"><i class="fas fa-smoking-ban"></i></p>
+    <p class="flex-sm-column">No smoking</p>
+  </div>
+
+</div>
