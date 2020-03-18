@@ -53,7 +53,7 @@ amenities = ['Full kitchen',
 'Balcony',
 'Waterfront']
 
-amenities.each do |new_amenity|
+amenities.sort.each do |new_amenity|
   amenity = Amenity.new(name: new_amenity)
   amenity.save
 end

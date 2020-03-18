@@ -1,20 +1,21 @@
+<div class="container background">
+<div class="container Header-Border"><h1 class="Review-House-Rules"><strong>Leave a review</strong></h1></div>
+  <div class="container">
+
+  <div class="review-image">
+    <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2600&q=80" alt="" class="avatar-bordered">
+    <p>Hey <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>! How was your trip at <%= @flat.name.capitalize %> ?  </p>
+  </div>
 
 
+  <div class="tips">Leaving a review is helpful!</div>
 
-<div class="container">
+  <%= simple_form_for [@flat, @review]  do |f| %>
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+    <%= f.button :submit ,class: "btn btn-primary font-weight-bold" %>
+  <% end %>
 
-<div class="review-image">
-  <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2600&q=80" alt="" class="avatar-bordered">
-  <p>Hey @user ! How was your trip at @NAME ?  </p>
+  </div>
 </div>
 
-
-<div class="tips">Leaving a review is helpfull</div>
-
-<%= simple_form_for [@flat, @review]  do |f| %>
-  <%= f.input :comment %>
-  <%= f.input :rating %>
-  <%= f.button :submit ,class: "btn btn-primary" %>
-<% end %>
-
-</div>
