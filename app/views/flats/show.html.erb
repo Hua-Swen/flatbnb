@@ -1,8 +1,27 @@
-<h1><%= @flat.name %></h1>
+<div class="header fixed-top">
+  <p class="back-buton"><i class="fas fa-arrow-left"></i></p>
+</div>
+<img class="flat-image" src="https://images.unsplash.com/photo-1565330502541-4937be8552e3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="">
 
-<p><%= @flat.description %></p>
-<p>Price per night:<%= @flat.price_per_night %></p>
-<p>Number of guests:<%= @flat.number_of_guests %></p>
+<div class="container flat-name">
+  <h1 class="flat-name-text"><%= @flat.name.capitalize %></h1>
+</div>
+
+<div class="container flat-name">
+  <p class="flat-text">Entire House in <%= @flat.city.name %></p>
+</div>
+
+<div class="container d-flex justify-content-start">
+  <p class="flat-text-info"><%= @flat.number_of_guests %> guests</p>
+  <p class="flat-text-info">studio</p>
+  <p class="flat-text-info">1 bed</p>
+  <p class="flat-text-info">1 bedroom</p>
+</div>
+
+<div class="container description">
+  <p><%= @flat.description %></p>
+</div>
+
 <p>Address: <%= @flat.address_name %></p>
 <p>Host: <%= @flat.user.first_name %> <%= @flat.user.last_name %></p>
 <p>City: <%= @flat.city.name %></p>
@@ -11,4 +30,12 @@
       <li> <%= review.comment %>  |  <%= review.rating %></li>
       <% end %>
     </ul>
+
+<div class="header fixed-bottom">
+  <div class="container d-flex justify-content-start">
+    <p class="pernight"><%= @flat.price_per_night %></p><p class="pernighttail"> / night</p>
+    <p class="btn btn-primary reserve-buton">Reserve</i></p>
+  </div>
+</div>
+
 
