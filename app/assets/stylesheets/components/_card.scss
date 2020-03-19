@@ -45,5 +45,31 @@
 }
 
 .card-trip-pricing p{
-white-space: nowrap;
+  white-space: nowrap;
+  font-weight:lighter;
 }
+
+.card-body{
+  height:50px;
+  padding:0px;
+  background-color:white;
+  border: 1px solid white;
+}
+.card-title{
+  font-size: 14px;
+  font-weight:lighter;
+}
+.carousel-control-next{
+  font-size:10px;
+}
+
+.card-carousel-title{
+  padding: 20px;
+  padding-bottom:8px;
+}
+
+.city-name{
+  font-size:10px;
+}
+
+
