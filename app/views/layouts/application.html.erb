@@ -13,8 +13,9 @@
   <body>
     <!--    <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
-    <%= yield %>
-
+    <div class="full-view">
+      <%= yield %>
+    </div>
     <% if user_signed_in? %>
       <div class="footer d-flex justify-content-around">
         <div class="footer-links ">
