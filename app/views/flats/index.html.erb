@@ -31,11 +31,10 @@
         <% end %>
         <div class="card-trip-infos">
             <div>
-              <h2><%= flat.city.name %><%= link_to flat.name.capitalize, flat_path(flat)%></h2>
+              <h2><%= flat.city.name %> <%= link_to flat.name.capitalize, flat_path(flat)%></h2>
               <p class="card-trip-description"><%= flat.description.capitalize %></p>
             </div>
               <p class="card-trip-pricing"> <bold><%=flat.price_per_night%> $ </bold> / night </p>
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" class="card-trip-user avatar-card" />
           </div>
     <% end %>
   </div>
@@ -55,7 +54,7 @@
                       <%= flat.city.name %>
                     </div>
                     <div class="card-title d-flex justify-content-between">
-                      <div> <%= flat.name %></div>
+                      <div> <%= link_to flat.name.capitalize, flat_path(flat)%></div>
                       <div><strong><%= flat.price_per_night %>$</strong>/night
                       </div>
                     </div>
@@ -88,7 +87,7 @@
                   </div>
                   <div class="card-title d-flex justify-content-between">
                     <div>
-                      <%= flat.name %>
+                      <%= link_to flat.name.capitalize, flat_path(flat)%>
                     </div>
                       <div>
                         <strong><%= flat.price_per_night %>$</strong>/night
