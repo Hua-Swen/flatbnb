@@ -10,6 +10,7 @@ gem 'redis'
 gem 'devise'
 gem 'faker'
 gem 'cloudinary', '~> 1.12.0'
+gem 'geocoder'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
