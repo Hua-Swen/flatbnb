@@ -1,9 +1,21 @@
 class FlatsController < ApplicationController
   before_action :find_flat, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: :index
+
   def index
-    @flats = Flat.all
+    @results = []
+    if params[:query].present?
+      sql_query = " \
+        cities.name ILIKE :query \
+      "
+      @queried_city = params[:query]
+      @result_arr = Flat.joins(:city).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @results = Flat.joins(:city).group_by{|flat| flat.city.name}
+      @host_flats = Flat.all.select {|flat| flat.user == current_user }
+    end
   end
+
 
   def show
   end
