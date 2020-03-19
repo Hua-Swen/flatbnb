@@ -149,3 +149,19 @@
   font-size: 10px;
   font-weight: bold;
 }
+
+.border-bottom {
+  border-bottom: solid 1px #ebebeb;
+  margin-bottom: 8px;
+}
+
+.review-bold {
+  font-size: 15px;
+  font-weight: bold;
+  color: #485252;
+}
+
+.stars-inline p {
+  display:inline;
+  color: $blue;
+}
