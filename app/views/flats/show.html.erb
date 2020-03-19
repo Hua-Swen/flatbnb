@@ -1,9 +1,39 @@
-  <div class="header fixed-top">
-    <%= link_to flats_path do %>
-      <p class="back-buton"><i class="fas fa-arrow-left"></i></p>
+<div class="header fixed-top">
+  <%= link_to flats_path do %>
+    <p class="back-buton"><i class="fas fa-arrow-left"></i></p>
+  <% end %>
+</div>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    <% @flat.photos.each_with_index do |photo, index| %>
+      <% if index == 0 %>
+        <div class="carousel-item active">
+          <%= cl_image_tag photo.key, class: "flat-image"%>
+        </div>
+      <% else %>
+        <div class="carousel-item">
+          <%= cl_image_tag photo.key, class: "flat-image"%>
+        </div>
+      <% end %>
     <% end %>
   </div>
-  <%= cl_image_tag @flat.photos[0].key, class: "flat-image" %>
+
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
   <!-- <img class="flat-image" src="https://images.unsplash.com/photo-1565330502541-4937be8552e3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt=""> -->
 <div class="container">
   <div class="flat-name">
@@ -64,35 +94,38 @@
       </div>
   </div>
 
-   <div class="sections">
-    <div class="d-flex">
-      <i class="fas fa-user-edit amenity-logo"></i><h1 class="flat-name-text">Reviews</h1>
-      <%= link_to new_flat_review_path(@flat, @review) do %>
-        <p class="btn btn-primary review-buton">Add Review</i></p>
-      <% end %>
-    </div>
-    <div class="d-flex">
-      <div class="d-flex flex-column-reverse">
-        <% @flat.reviews.each do |review|  %>
-          <div>
-            <div class="review"><%= review.comment %></div>
-            <div><%= review.rating %></div>
-          </div>
+  <% unless current_user.host %>
+     <div class="sections">
+      <div class="d-flex">
+        <i class="fas fa-user-edit amenity-logo"></i><h1 class="flat-name-text">Reviews</h1>
+        <%= link_to new_flat_review_path(@flat, @review) do %>
+          <p class="btn btn-primary review-buton">Add Review</i></p>
         <% end %>
       </div>
+      <div class="d-flex">
+        <div class="d-flex flex-column-reverse">
+          <% @flat.reviews.each do |review|  %>
+            <div>
+              <div class="review"><%= review.comment %></div>
+              <div><%= review.rating %></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-
-  <div class="space-for-bar"></div>
-  <div class="header d-flex justify-content-around fixed-bottom p-2">
-    <div class="container d-flex reserve-info">
-      <p class="pernight">$<%=@flat.price_per_night %></p>
-      <p class="no-left"> / night</p>
+  <% unless current_user.host %>
+    <div class="space-for-bar"></div>
+    <div class="header d-flex justify-content-around fixed-bottom p-2">
+      <div class="container d-flex reserve-info">
+        <p class="pernight">$<%=@flat.price_per_night %></p>
+        <p class="no-left"> / night</p>
+      </div>
+      <%= link_to new_flat_booking_path(@flat, @booking) do %>
+        <p class="btn btn-primary reserve-buton">Reserve</i></p>
+      <% end %>
     </div>
-    <%= link_to new_flat_booking_path(@flat, @booking) do %>
-      <p class="btn btn-primary reserve-buton">Reserve</i></p>
-    <% end %>
-  </div>
+  <% end %>
 </div>
 
