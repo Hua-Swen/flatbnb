@@ -18,12 +18,24 @@
     <% if user_signed_in? %>
       <div class="footer d-flex justify-content-around">
         <div class="footer-links ">
-          <a href="#"><i class="fas fa-user-circle"></i></a>
-          <%= link_to flats_path do %>
-            <i class="fas fa-suitcase-rolling"></i>
-          <% end %>          <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt"></i>
+          <%= link_to user_path(current_user) do %>
+          <i class="fas fa-user-circle"></i>
           <% end %>
+
+          <%= link_to flats_path do %>
+            <i class="fas fa-home"></i>
+          <% end %>
+
+          <% if current_user.host %>
+            <%= link_to new_flat_path do %>
+              <i class="far fa-plus-square"></i>
+            <% end %>
+          <% else %>
+            <%= link_to bookings_path do %>
+              <i class="fas fa-history"></i>
+            <% end %>
+          <% end %>
+
         </div>
       </div>
     <% else %>
@@ -31,7 +43,7 @@
         <div class="footer-links ">
           <a href="#"><i class="fas fa-user-circle"></i></a>
           <%= link_to flats_path do %>
-            <i class="fas fa-suitcase-rolling"></i>
+            <i class="fas fa-home"></i>
           <% end %>
           <%= link_to new_user_session_path do %>
             <i class="fas fa-sign-in-alt"></i>
