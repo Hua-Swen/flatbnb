@@ -15,5 +15,7 @@ class Flat < ApplicationRecord
   validates :user, presence: true
   validates :city, presence: true
 
+  geocoded_by :address_name
+  after_validation :geocode, if: :will_save_change_to_address_name?
 end
 
