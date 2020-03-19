@@ -1,10 +1,14 @@
 <div class="container height-100vh">
   <div class="container-center">
-  <%= cl_image_tag @user.photo.key,
-        src: 'Image Not Found',
-        onerror: 'this.error=null;this.src="http://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg"',
-        class: "avatar-circle" %>
-  <p><%=  @user.first_name %> <%=  @user.last_name %></p>
+    <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key,
+            src: 'Image Not Found',
+            onerror: 'this.error=null;this.src="http://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg"',
+            class: "avatar-circle" %>
+    <% else %>
+      <%= image_tag "http://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg", class: "avatar-circle"%>
+    <% end %>
+    <p><%=  @user.first_name %> <%=  @user.last_name %></p>
   </div>
 
   <div class="border-bottom-solid borderwidth-1 border-color-grey">
