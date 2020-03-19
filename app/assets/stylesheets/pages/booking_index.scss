@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.card-product img {
+.booking-image {
   height: 100%;
   width: 120px;
   object-fit: cover;
@@ -32,4 +32,8 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.margin-for-bookings {
+  margin-top: 70px;
 }

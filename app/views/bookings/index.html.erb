@@ -1,21 +1,29 @@
 
 <div class="container full-view">
 
-  <% @bookings.each do |booking| %>
-    <div class="card-product">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-product-infos">
-        <h2>Booking <%= booking.id %></h2>
-        <p>Product description with <strong>relevant info</strong> only.</p>
-      </div>
-    </div>
-  <% end %>
+  <div class="">
+    <h1 class="p-2 bg-white bold-font text-center headers-color headers-font-size fixed-top">Booking History</h1>
+  </div>
 
+
+  <div class="margin-for-bookings">
+    <% @bookings.each do |booking| %>
+      <div class="card-product mt-4">
+        <% if booking.flat.photos.attached? %>
+          <%= cl_image_tag booking.flat.photos.first, class: "booking-image" %>
+        <% else %>
+          <img class="booking-image" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <% end %>
+        <div class="card-product-infos">
+          <h2><%= booking.flat.name.capitalize %></h2>
+          <p class="mt-0"><em>reference no:<%= @user.id %>-<%= booking.created_at.to_s[0..9] %>-<%= booking.id %></em></p>
+          <p>Date check in <strong><%= (booking.date_check_in).to_formatted_s(:long_ordinal) %></strong></p>
+          <p>Date check out <strong><%= (booking.date_check_out).to_formatted_s(:long_ordinal) %></strong></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 
-<%# @bookings.each do |booking| %>
-  <%#= booking.id %>
-  <%# raise %>
- <%# end %>
 
