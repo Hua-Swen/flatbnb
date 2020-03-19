@@ -14,5 +14,6 @@ class Flat < ApplicationRecord
   validates :address_name, presence: true
   validates :user, presence: true
   validates :city, presence: true
+
 end
 

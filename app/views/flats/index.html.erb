@@ -7,13 +7,22 @@
   <p>" Top-rated places to stay. Explore some of the best-reviewed stays in the world."</p>
 </div>
 
+<div class="container">
+  <%= form_tag flats_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder:  "Singapore, Paris, London... "
+    %>
+    <div>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
 
-<!-- <h1>  cl_image_tag("k8ncsz9ntoptdbtvhabp",
-      width: 400, height: 300, crop: :fill) %></h1>-->
+
 <% if !current_user.nil? && current_user.host %>
   <h3>These are your flats</h3>
   <div class="card-trip">
-    <% @host_flats = @flats.select {|flat| flat.user == current_user } %>
     <% @host_flats.each do |flat| %>
         <% if flat.photos.empty? %>
           <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" />
@@ -22,35 +31,79 @@
         <% end %>
         <div class="card-trip-infos">
             <div>
-              <h2><%= link_to flat.name.capitalize, flat_path(flat)%></h2>
+              <h2><%= flat.city.name %><%= link_to flat.name.capitalize, flat_path(flat)%></h2>
               <p class="card-trip-description"><%= flat.description.capitalize %></p>
             </div>
-              <p class="card-trip-pricing"><%=flat.price_per_night%> $ / night </p>
+              <p class="card-trip-pricing"> <strong><%=flat.price_per_night%> $ </strong> / night </p>
             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" class="card-trip-user avatar-card" />
           </div>
     <% end %>
   </div>
 <% else %>
-  <div class="card-trip">
-    <% @flats.each do |flat| %>
-        <% if flat.photos.empty? %>
-          <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" />
-        <% else %>
-          <%= cl_image_tag flat.photos[0].key %>
-        <% end %>
-        <div class="card-trip-infos">
-            <div>
-              <h2><%= link_to flat.name.capitalize, flat_path(flat)%></h2>
-              <p class="card-trip-description"><%= flat.description.capitalize %></p>
+
+
+
+
+<div class="container-fluid">
+  <% if @result_arr.present? %>
+    <h5 class="m-3">Flat in <%= @queried_city %> </h5>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner row w-100 mx-auto">
+        <% @result_arr.each do |flat| %>
+        <div class="carousel-item col-md-4 active">
+          <div class="card">
+            <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title"><%= flat.name %></h4>
+              <p class="card-text"> <%= flat.description %></p>
+              <p class="card-text"><small class="text-muted"><%= flat.price_per_night %> $ / night </small></p>
             </div>
-              <p class="card-trip-pricing"><%=flat.price_per_night%> $ / night </p>
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" class="card-trip-user avatar-card" />
           </div>
-    <% end %>
-  </div>
+        </div>
+        <% end %>
+      </div>
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  <% end %>
+
+  <% @results.each do |city_name , flats| %>
+    <h5 class="m-3">Flat in <%= city_name %> </h5>
+    <div id="carousel<%= city_name %>" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner row w-100 mx-auto">
+        <% flats.each do |flat| %>
+        <div class="carousel-item col-md-4 active">
+          <div class="card">
+            <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title"><%= flat.name %></h4>
+              <p class="card-text"> <%= flat.description %></p>
+              <p class="card-text"><small class="text-muted"><%= flat.price_per_night %> $ / night </small></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <a class="carousel-control-prev" href="#carousel<%= city_name %>" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel<%= city_name %>" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  <% end %>
+</div>
+
+
 <% end %>
-
-
 
 <% if !current_user.nil? && current_user.host %>
   <div class="new-flat">
@@ -59,3 +112,24 @@
     <% end %>
   </div>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
