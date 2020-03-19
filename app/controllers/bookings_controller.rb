@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @bookings = Booking.all
+    @bookings = Booking.where(user: @user)
   end
 
   def show
