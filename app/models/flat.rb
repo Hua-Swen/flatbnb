@@ -1,7 +1,7 @@
 class Flat < ApplicationRecord
   belongs_to :city
   belongs_to :user
-  has_many :amenities_flats
+  has_many :amenities_flats, dependent: :destroy
   has_many :amenities, through: :amenities_flats
   has_many :bookings
   has_many :reviews

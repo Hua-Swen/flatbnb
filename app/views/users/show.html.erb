@@ -1,0 +1,46 @@
+<div class="container height-100vh">
+  <div class="container-center">
+  <%= cl_image_tag @user.photo.key,
+        src: 'Image Not Found',
+        onerror: 'this.error=null;this.src="http://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg"',
+        class: "avatar-circle" %>
+  <p><%=  @user.first_name %> <%=  @user.last_name %></p>
+  </div>
+
+  <div class="border-bottom-solid borderwidth-1 border-color-grey">
+    <h1 class="mt-3 bold-font text-center headers-color headers-font-size">Account Details</h1>
+  </div>
+
+  <div class="d-flex flex-column mt-2 border-bottom-solid borderwidth-1 border-color-grey">
+
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <i class="fas fa-envelope labels-text mr-1 margintop-3px"></i><p class="labels-text mr-2">Email:</p>
+      </div>
+      <p><%= @user.email %></p>
+    </div>
+
+    <%= link_to user_path(@user) do %>
+        <div class="d-flex justify-content-between">
+          <div class="d-flex">
+            <p class="link-green"><i class="fas fa-bed mr-1 margintop-3px"></i>Number of bookings:</p>
+          </div>
+          <p><%= @user.bookings.length %></p>
+        </div>
+    <% end %>
+
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <i class="fas fa-pen labels-text mr-1 margintop-3px"></i><p class="labels-text mr-2">Number of reviews:</p>
+      </div>
+      <p><%= @user.reviews.length %></p>
+    </div>
+
+    <div class="spacing-long">
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <p><i class="fas fa-sign-out-alt"></i> Sign out</p>
+    <% end %>
+    </div>
+  </div>
+</div>
+
