@@ -1,27 +1,34 @@
 
 <div class="container full-view">
 
-  <div class="">
-    <h1 class="p-2 bg-white bold-font text-center headers-color headers-font-size fixed-top">Booking History</h1>
+  <div class="p-2 bg-white fixed-top">
+    <h1 class="headers-font-size bold-font text-center headers-color mb-0">My Booking History</h1>
+    <p class="text-center mt-0 font-italic header-instructions">click each booking for details</p>
   </div>
 
 
   <div class="margin-for-bookings">
-    <% @bookings.each do |booking| %>
-      <div class="card-product mt-4">
-        <% if booking.flat.photos.attached? %>
-          <%= cl_image_tag booking.flat.photos.first, class: "booking-image" %>
-        <% else %>
-          <img class="booking-image" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <% if @bookings.empty? %>
+      <p class="no-booking"><%= "You have no bookings" %></p>
+    <% else %>
+       <% @bookings.each do |booking| %>
+        <%= link_to flat_booking_path(booking.flat, booking), class: "link" do %>
+          <div class="card-product mt-4">
+            <% if booking.flat.photos.attached? %>
+              <%= cl_image_tag booking.flat.photos.first.key, class: "booking-image" %>
+            <% else %>
+              <img class="booking-image" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <% end %>
+            <div class="card-product-infos">
+              <h2><%= booking.flat.name.capitalize %></h2>
+              <p class="mt-0"><em>reference no:<%= @user.id %>-<%= booking.created_at.to_s[0..9] %>-<%= booking.id %></em></p>
+              <p>Date check in <strong><%= (booking.date_check_in).to_formatted_s(:long_ordinal) %></strong></p>
+              <p>Date check out <strong><%= (booking.date_check_out).to_formatted_s(:long_ordinal) %></strong></p>
+            </div>
+          </div>
         <% end %>
-        <div class="card-product-infos">
-          <h2><%= booking.flat.name.capitalize %></h2>
-          <p class="mt-0"><em>reference no:<%= @user.id %>-<%= booking.created_at.to_s[0..9] %>-<%= booking.id %></em></p>
-          <p>Date check in <strong><%= (booking.date_check_in).to_formatted_s(:long_ordinal) %></strong></p>
-          <p>Date check out <strong><%= (booking.date_check_out).to_formatted_s(:long_ordinal) %></strong></p>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+  <% end %>
   </div>
 </div>
 
