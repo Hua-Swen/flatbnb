@@ -1,9 +1,89 @@
-<p>number of nights: <%= (@booking.date_check_out - @booking.date_check_in).to_i %></p>
-<p>check out date: <%= @booking.date_check_out %></p>
-<p>check in date: <%= @booking.date_check_in %></p>
-<p>total cost = <%= @booking.flat.price_per_night * (@booking.date_check_out - @booking.date_check_in).to_i %></p>
+<div class="container height-100vh">
+  <!-- Booking Summary -->
+  <div class="border-bottom-solid borderwidth-1 border-color-grey">
+    <h1 class="mt-3 bold-font text-center headers-color headers-font-size">Booking Summary</h1>
+  </div>
 
-<p>number of guests: <%= @booking.number_of_guests %></p>
-<p>user: <%= @booking.user.email %></p>
+  <div class="d-flex flex-column mt-2 border-bottom-solid borderwidth-1 border-color-grey">
 
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <i class="fas fa-home labels-text mr-1 margintop-2px"></i><p class="labels-text mr-2">booked:</p>
+      </div>
+      <p><%= @booking.flat.name.capitalize %></p>
+    </div>
 
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <i class="fas fa-bed labels-text mr-1 margintop-3px"></i><p class="labels-text mr-2">Total nights:</p>
+      </div>
+      <p><%= (@booking.date_check_out - @booking.date_check_in).to_i %></p>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <i class="fas fa-users labels-text mr-1 margintop-2px"></i><p class="labels-text mr-2">Total guests:</p>
+      </div>
+      <p><%= @booking.number_of_guests %></p>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <i class="fas fa-plane-arrival labels-text mr-1 margintop-3px"></i><p class="labels-text mr-2">Check in:</p>
+      </div>
+      <p><%= (@booking.date_check_in).to_formatted_s(:long_ordinal)  %></p>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <i class="fas fa-plane-departure labels-text mr-1 margintop-3px"></i><p class="labels-text mr-2">Check out:</p>
+      </div>
+      <p><%= (@booking.date_check_out).to_formatted_s(:long_ordinal)  %></p>
+    </div>
+  </div>
+
+<!-- Cost Summary -->
+  <div>
+    <div>
+      <h1 class="mt-3 bold-font text-center headers-color headers-font-size">Cost Breakdown</h1>
+    </div>
+
+    <div class="d-flex flex-column mt-2">
+
+      <div class="d-flex mt-2 justify-content-between border-bottom-solid borderwidth-1 border-color-grey">
+        <div class="d-flex">
+          <p class="labels-text">$<%= @booking.flat.price_per_night %> x <%= (@booking.date_check_out - @booking.date_check_in).to_i %> nights</p>
+        </div>
+        <p>$<%= @flat_cost = @booking.flat.price_per_night * (@booking.date_check_out - @booking.date_check_in).to_i %></p>
+      </div>
+
+      <div class="d-flex mt-2 justify-content-between border-bottom-solid borderwidth-1 border-color-grey">
+        <div class="d-flex">
+          <p class="labels-text">Cleaning fee</p>
+        </div>
+        <p>$<%= @cleaning = ((@booking.flat.price_per_night * (@booking.date_check_out - @booking.date_check_in).to_i) * 0.1).to_i %></p>
+      </div>
+
+      <div class="d-flex mt-2 justify-content-between border-bottom-solid borderwidth-1 border-color-grey">
+        <div class="d-flex">
+          <p class="labels-text">Service fee</p>
+        </div>
+        <p>$<%= @service = ((@booking.flat.price_per_night * (@booking.date_check_out - @booking.date_check_in).to_i) * 0.25).to_i %></p>
+      </div>
+
+      <div class="d-flex mt-2 justify-content-between border-bottom-solid borderwidth-1 border-color-grey">
+        <div class="d-flex">
+          <p class="labels-text">Relevant taxes</p>
+        </div>
+        <p>$<%= @tax = ((@booking.flat.price_per_night * (@booking.date_check_out - @booking.date_check_in).to_i) * 0.07).to_i %></p>
+      </div>
+
+      <div class="d-flex mt-2 justify-content-between border-bottom-solid borderwidth-1 border-color-grey">
+        <div class="d-flex">
+          <p class="labels-text">Total</p>
+        </div>
+        <p class="labels-text">$<%= @flat_cost + @cleaning + @service + @tax %></p>
+      </div>
+    </div>
+  </div>
+</div>
