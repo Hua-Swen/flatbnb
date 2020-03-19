@@ -1,5 +1,10 @@
 class BookingsController < ApplicationController
 
+  def index
+    @user = User.find(params[:user_id])
+    @bookings = Booking.all
+  end
+
   def show
     @flat = Flat.find(params[:flat_id])
     @booking = Booking.find(params[:id])
