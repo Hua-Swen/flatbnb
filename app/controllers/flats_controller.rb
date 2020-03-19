@@ -19,7 +19,6 @@ class FlatsController < ApplicationController
 
   def show
     @flats = Flat.geocoded #returns flats with coordinates
-
     @markers = @flats.map do |flat|
       {
         lat: flat.latitude,

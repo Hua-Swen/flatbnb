@@ -7,8 +7,11 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <% (@flat.photos.length - 1).times do %>
+      <% counter = 1 %>
+      <li data-target="#carouselExampleIndicators" data-slide-to="<%= counter %>"></li>
+      <% counter += 1 %>
+    <% end %>
   </ol>
 
   <div class="carousel-inner">
@@ -89,28 +92,41 @@
       <i class="fas fa-address-card amenity-logo"></i><h1 class="flat-name-text">Your Host</h1>
     </div>
       <div class="d-flex">
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+                <%= cl_image_tag @flat.user.photo.key, class: "avatar-large" %>
         <p class="host-name"><%= @flat.user.first_name.capitalize %> <%= @flat.user.last_name.capitalize %></p>
       </div>
   </div>
 
   <% unless current_user.host %>
-     <div class="sections">
+    <div class="sections">
       <div class="d-flex">
         <i class="fas fa-user-edit amenity-logo"></i><h1 class="flat-name-text">Reviews</h1>
         <%= link_to new_flat_review_path(@flat, @review) do %>
           <p class="btn btn-primary review-buton">Add Review</i></p>
         <% end %>
       </div>
-      <div class="d-flex">
-        <div class="d-flex flex-column-reverse">
-          <% @flat.reviews.each do |review|  %>
-            <div>
-              <div class="review"><%= review.comment %></div>
-              <div><%= review.rating %></div>
+
+      <div class="d-flex flex-column mt-2 border-bottom-solid borderwidth-1 border-color-grey">
+        <% @flat.reviews.each do |review| %>
+          <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center">
+              <%= cl_image_tag review.user.photo.key, class: "avatar-large" %>
+              <div class="review-bold ml-3">
+              <p class="mb-0"><%= review.user.first_name %> <%= review.user.last_name %></p>
+              <p class="mb-0"><%= review.created_at.strftime('%d %b %Y') %></p>
+              </div>
             </div>
-          <% end %>
-        </div>
+            <div class="stars-inline">
+              <% review.rating.to_i.times do  %>
+               <p><i class="fas fa-star"></i></p>
+              <% end %>
+              <% (5 - review.rating.to_i).times do  %>
+               <p><i class="far fa-star"></i></p>
+              <% end %>
+            </div>
+          </div>
+          <p class="mt-2"><%= review.comment %></p>
+        <% end %>
       </div>
     </div>
   <% end %>
