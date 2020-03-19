@@ -3,8 +3,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   has_many :flats
   has_one_attached :photo
-  has_many :bookings
-  has_many :reviews
+  has_many :bookings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

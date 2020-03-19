@@ -15,7 +15,7 @@
       placeholder:  "Singapore, Paris, London... "
     %>
     <div>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= submit_tag "Search", class: "btn btn-primary d-none" %>
   <% end %>
 </div>
 
@@ -113,16 +113,6 @@
   <% end %>
 
 
-
-
-
-<% if !current_user.nil? && current_user.host %>
-  <div class="new-flat">
-    <%= link_to new_flat_path do %>
-    <div class="btn btn-primary ">New flat</div>
-    <% end %>
-  </div>
-<% end %>
 
 
 
