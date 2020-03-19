@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'user/show'
+  resources :users, only: :show do
+      resources :bookings, only: :index
+  end
   devise_for :user
   root to: 'flats#index'
   resources :flats do
