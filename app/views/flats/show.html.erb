@@ -41,10 +41,17 @@
       <i class="fas fa-map-marked-alt amenity-logo"></i><h1 class="flat-name-text">Location</h1>
     </div>
     <p class="flat-text-info"><%= @flat.address_name %></p>
-    <div class="map"></div>
+
+      <div id="map" style="width: 100%; height: 250px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API'] %>">
+
+      </div>
+
+
+
     <div>
 
     </div>
+
   </div>
 
    <div class="sections">
