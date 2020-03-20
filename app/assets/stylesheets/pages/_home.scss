@@ -23,4 +23,25 @@
 .form-control{
   border-radius: 20px;
   text-opacity: 0.1px;
+  padding:10px;
+  font-style: italic;
+  font-color:white;
+}
+
+.container-form {
+  padding:20px;
+  width:80%;
+  margin: 0 auto ;
+}
+
+.city-text p{
+font-style:italic;
+font-size:10px;
+color:$blue;
+margin-left:15px;
+}
+
+.city-text h5{
+  margin-left:15px;
+  color: #666666;
 }

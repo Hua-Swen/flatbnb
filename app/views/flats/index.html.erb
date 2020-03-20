@@ -8,17 +8,20 @@
 </div>
 
 <div class="container">
+  <div class="container-form">
   <%= form_tag flats_path, method: :get do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder:  "Singapore, Paris, London... "
+      placeholder:  "Where do you wanna go ? "
     %>
+    </div>
     <div>
-    <%= submit_tag "Search", class: "btn btn-primary d-none" %>
-  <% end %>
-</div>
+      <%= submit_tag "Search", class: "btn btn-primary d-none" %>
+      <% end %>
+    </div>
 
+<!-- HOST PAGE  -->
 
 <% if !current_user.nil? && current_user.host %>
   <h3>These are your flats</h3>
@@ -40,9 +43,16 @@
   </div>
 <% else %>
 
+
+<!-- DEFAULT AND USER PAGE -->
+
+
   <div class="container-fluid">
       <% if @result_arr.present? %>
-        <h5 class="m-3">Flat in <%= @queried_city %> </h5>
+      <div class="city-text">
+          <h5>Find your dream place in <%= @queried_city %></h5>
+          <p>There is <%= @result_arr.count %> available flats in <%=@queried_city%></p>
+      </div>
         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
           <div class="carousel-inner row w-100 mx-auto">
             <% @result_arr.each_with_index do |flat, index| %>
@@ -74,7 +84,10 @@
   </div>
 
       <% @results.each do |city_name , flats| %>
-        <div class="card-carousel-title">Flat in <%= city_name %> </div>
+          <div class="city-text">
+            <h5>Find your dream place in <%= city_name %></h5>
+            <p>There is <%=flats.count%> available flats in <%= city_name %></p>
+          </div>
         <div id="carousel<%= city_name %>" class="carousel slide" data-ride="carousel" data-interval="false">
           <div class="carousel-inner row w-100 mx-auto">
             <% flats.each_with_index do |flat, index| %>
