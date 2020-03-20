@@ -46,7 +46,7 @@
     </div>
 
     <div class="flat-name d-flex">
-      <i class="fas fa-star mb-0 star flat-name mt-2"></i>
+      <i class="fas fa-star mb-0 star flat-name mt-2 mr-1"></i>
       <p class="flat-name"> <%= @review_average %> (<%= @total_reviews %>)</p> </div> </div>
 
   <div class="flat-name">
@@ -56,8 +56,8 @@
   <div class="d-flex justify-content-start">
     <p class="flat-text-info"><%= @flat.number_of_guests %> guests</p>
     <p class="flat-text-info"><%= @flat.type_of_flat %></p>
-    <p class="flat-text-info">1 bed</p>
-    <p class="flat-text-info">1 bedroom</p>
+    <p class="flat-text-info"><%= @flat.number_of_guests * 2 %> beds</p>
+    <p class="flat-text-info"><%= @flat.number_of_guests %> bedroom</p>
   </div>
 
   <div class="description">
