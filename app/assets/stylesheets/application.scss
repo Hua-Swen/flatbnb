@@ -15,10 +15,21 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
 .spacing {
-  padding-bottom: 140px;
+  padding-bottom: 200px;
   background-color: white;
 }
 
 .full-view {
   height: 100vh;
+}
+
+.img-height {
+  height: 200px;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+}
+
+.div-img-scale {
 }

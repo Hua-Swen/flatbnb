@@ -39,9 +39,15 @@
 </div>
   <!-- <img class="flat-image" src="https://images.unsplash.com/photo-1565330502541-4937be8552e3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt=""> -->
 <div class="container">
-  <div class="flat-name">
-    <h1 class="flat-name-text"><%= @flat.name.capitalize %></h1>
-  </div>
+
+  <div class="d-flex justify-content-between">
+    <div class="flat-name">
+      <h1 class="flat-name-text"><%= @flat.name.capitalize %></h1>
+    </div>
+
+    <div class="flat-name d-flex">
+      <i class="fas fa-star mb-0 star flat-name mt-2"></i>
+      <p class="flat-name"> <%= @review_average %> (<%= @total_reviews %>)</p> </div> </div>
 
   <div class="flat-name">
     <p class="flat-text">Entire House in <%= @flat.city.name %></p>
@@ -97,51 +103,52 @@
       </div>
   </div>
 
-  <% unless current_user.host %>
-    <div class="sections">
+    <div class="sections m-b-kenn">
       <div class="d-flex">
         <i class="fas fa-user-edit amenity-logo"></i><h1 class="flat-name-text">Reviews</h1>
-        <%= link_to new_flat_review_path(@flat, @review) do %>
-          <p class="btn btn-primary review-buton">Add Review</i></p>
+        <% unless current_user.host %>
+          <%= link_to new_flat_review_path(@flat, @review) do %>
+            <p class="btn btn-primary review-buton">Add Review</i></p>
+          <% end %>
         <% end %>
       </div>
 
-      <div class="d-flex flex-column mt-2 border-bottom-solid borderwidth-1 border-color-grey">
-        <% @flat.reviews.each do |review| %>
-          <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-              <%= cl_image_tag review.user.photo.key, class: "avatar-large" %>
-              <div class="review-bold ml-3">
-              <p class="mb-0"><%= review.user.first_name %> <%= review.user.last_name %></p>
-              <p class="mb-0"><%= review.created_at.strftime('%d %b %Y') %></p>
-              </div>
-            </div>
-            <div class="stars-inline">
-              <% review.rating.to_i.times do  %>
-               <p><i class="fas fa-star"></i></p>
-              <% end %>
-              <% (5 - review.rating.to_i).times do  %>
-               <p><i class="far fa-star"></i></p>
-              <% end %>
+    <div class="d-flex flex-column mt-2 border-bottom-solid borderwidth-1 border-color-grey">
+      <% @flat.reviews.each do |review| %>
+        <div class="d-flex justify-content-between">
+          <div class="d-flex align-items-center">
+            <%= cl_image_tag review.user.photo.key, class: "avatar-large" %>
+            <div class="review-bold ml-3">
+            <p class="mb-0"><%= review.user.first_name %> <%= review.user.last_name %></p>
+            <p class="mb-0"><%= review.created_at.strftime('%d %b %Y') %></p>
             </div>
           </div>
-          <p class="mt-2"><%= review.comment %></p>
-        <% end %>
-      </div>
+          <div class="stars-inline">
+            <% review.rating.to_i.times do  %>
+             <p><i class="fas fa-star"></i></p>
+            <% end %>
+            <% (5 - review.rating.to_i).times do  %>
+             <p><i class="far fa-star"></i></p>
+            <% end %>
+          </div>
+        </div>
+        <p class="mt-2"><%= review.comment %></p>
+      <% end %>
     </div>
-  <% end %>
+    </div>
 
   <% unless current_user.host %>
     <div class="space-for-bar"></div>
     <div class="header d-flex justify-content-around fixed-bottom p-2">
-      <div class="container d-flex reserve-info">
-        <p class="pernight">$<%=@flat.price_per_night %></p>
+      <div class="d-flex reserve-info">
+        <p class="pernight">$<%= @flat.price_per_night %></p>
         <p class="no-left"> / night</p>
       </div>
       <%= link_to new_flat_booking_path(@flat, @booking) do %>
-        <p class="btn btn-primary reserve-buton">Reserve</i></p>
+        <p class="btn btn-primary reserve-buton">Book now</i></p>
       <% end %>
     </div>
   <% end %>
 </div>
 
+<% @show_page = true %>

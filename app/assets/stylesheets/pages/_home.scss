@@ -1,9 +1,12 @@
 // Specific CSS for your home-page
-.title-welcome{
+.title-welcome h2{
   text-align: center;
   color: $blue;
   padding-top: 30px;
   padding-bot: 20px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size:50px;
+  font-weight:500;
 }
 
 .welcome-text{
@@ -12,8 +15,8 @@
   font-family: roboto, sans-serif;
   font-style: italic;
   font-weight: lighter;
-  font-size: 10px;
-  width:40%;
+  font-size: 12px;
+  width:60%;
   text-align:center;
   display: flex;
   justify: center;
@@ -23,4 +26,31 @@
 .form-control{
   border-radius: 20px;
   text-opacity: 0.1px;
+  padding:10px;
+  font-style: italic;
+  font-color:white;
+}
+
+.container-form {
+  padding-bottom:20px;
+  width:80%;
+  margin: 0 auto ;
+}
+
+.city-text p{
+font-style:italic;
+font-size:10px;
+color:$blue;
+margin-left:15px;
+margin-bottom:4px;
+}
+
+.city-text h5{
+  margin-left:15px;
+  color: #666666;
+  margin-bottom: 2px;
+}
+.price_per_night{
+  font-weight:100;
+  font-size:14px;
 }

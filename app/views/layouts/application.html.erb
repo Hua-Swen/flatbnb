@@ -7,7 +7,6 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
@@ -16,43 +15,44 @@
     <div class="full-view">
       <%= yield %>
     </div>
-    <% if user_signed_in? %>
-      <div class="footer d-flex justify-content-around">
-        <div class="footer-links ">
-          <%= link_to user_path(current_user) do %>
-          <i class="fas fa-user-circle"></i>
-          <% end %>
-
-          <%= link_to flats_path do %>
-            <i class="fas fa-home"></i>
-          <% end %>
-
-          <% if current_user.host %>
-            <%= link_to new_flat_path do %>
-              <i class="far fa-plus-square"></i>
+    <% unless @show_page %>
+      <% if user_signed_in? %>
+        <div class="footer d-flex justify-content-around fixed-bottom">
+          <div class="footer-links ">
+            <%= link_to user_path(current_user) do %>
+            <i class="fas fa-user-circle"></i>
             <% end %>
-          <% else %>
-            <%= link_to user_bookings_path(current_user) do %>
-              <i class="fas fa-history"></i>
-            <% end %>
-          <% end %>
 
+            <%= link_to flats_path do %>
+              <i class="fas fa-home"></i>
+            <% end %>
+
+            <% if current_user.host %>
+              <%= link_to new_flat_path do %>
+                <i class="far fa-plus-square"></i>
+              <% end %>
+            <% else %>
+              <%= link_to user_bookings_path(current_user) do %>
+                <i class="fas fa-history"></i>
+              <% end %>
+            <% end %>
+
+          </div>
         </div>
-      </div>
-    <% else %>
-      <div class="footer d-flex justify-content-around">
-        <div class="footer-links ">
-          <a href="#"><i class="fas fa-user-circle"></i></a>
-          <%= link_to flats_path do %>
-            <i class="fas fa-home"></i>
-          <% end %>
-          <%= link_to new_user_session_path do %>
-            <i class="fas fa-sign-in-alt"></i>
-          <% end %>
+      <% else %>
+        <div class="footer d-flex justify-content-around fixed-bottom">
+          <div class="footer-links ">
+            <a href="#"><i class="fas fa-user-circle"></i></a>
+            <%= link_to flats_path do %>
+              <i class="fas fa-home"></i>
+            <% end %>
+            <%= link_to new_user_session_path do %>
+              <i class="fas fa-sign-in-alt"></i>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>

@@ -1,6 +1,10 @@
 .flat-image {
   width: 100vw;
-  height: 60vh;
+  height: 50vh;
+  // object-fit: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   display: block;
   object-fit: cover;
 }
@@ -12,19 +16,18 @@
 .back-buton {
   color: black;
   margin-left: 15px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .flat-name {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .flat-name-text {
   font-size: 32px;
   font-weight: bold;
   color: #485252;
-  margin-top: 10px;
 }
 
 .flat-text {
@@ -164,5 +167,13 @@
 
 .stars-inline p {
   display:inline;
-  color: $blue;
+  color: #28587B;
+}
+
+.m-b-kenn {
+  margin-bottom: 90px;
+}
+
+.star {
+  color: #28587B;
 }
