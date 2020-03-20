@@ -7,6 +7,8 @@
   <p>" Top-rated places to stay. Explore some of the best-reviewed stays in the world."</p>
 </div>
 
+
+
 <div class="container">
   <%= form_tag flats_path, method: :get do %>
     <%= text_field_tag :query,
@@ -21,8 +23,8 @@
 
 
 <% if !current_user.nil? && current_user.host %>
-  <h3>These are your flats</h3>
-  <div class="card-trip">  <h3>These are your flats</h3>
+  <h3 style=" color: #666666; border-radius: 5px; font-size: 1.25rem; background: none;">These are your flats</h3>
+  <div class="card-trip">
 
     <% @host_flats.each do |flat| %>
         <% if flat.photos.empty? %>
