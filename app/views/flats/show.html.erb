@@ -108,7 +108,7 @@
         <i class="fas fa-user-edit amenity-logo"></i><h1 class="flat-name-text section-margin">Reviews</h1>
         <% unless current_user.host %>
           <%= link_to new_flat_review_path(@flat, @review) do %>
-            <p class="btn btn-primary review-buton">Add Review</i></p>
+            <p class="btn btn-primary review-buton d-none">Add Review</i></p>
           <% end %>
         <% end %>
       </div>
