@@ -51,14 +51,14 @@
       <% if @result_arr.present? %>
       <div class="city-text">
           <h5>Find your dream place in <%= @queried_city %></h5>
-          <p>There is <%= @result_arr.count %> available flats in <%=@queried_city%></p>
+          <p>There are <%= @result_arr.count %> available flats in <%=@queried_city%></p>
       </div>
         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
           <div class="carousel-inner row w-100 mx-auto">
             <% @result_arr.each_with_index do |flat, index| %>
               <div class="carousel-item col-md-12 <%= index == 0 ? "active" : "" %>">
                 <div class="card-carousel">
-                  <%= cl_image_tag flat.photos[0].key, class: "card-img-top img-fluid" %>
+                  <%= cl_image_tag flat.photos[0].key, height: 80, class: "card-img-top img-fluid" %>
                   <div class="card-body">
                     <div class="city-name">
                       <%= flat.city.name %>
@@ -93,7 +93,7 @@
             <% flats.each_with_index do |flat, index| %>
               <div class="carousel-item col-md-4 <%= index == 0 ? "active" : "" %>">
                 <div class="card-carousel">
-                  <%= cl_image_tag flat.photos[0].key, class: "card-img-top img-fluid" %>
+                  <%= cl_image_tag flat.photos[0].key, class: "card-img-top img-height" %>
                 <div class="card-body">
                   <div class="city-name">
                     <%= flat.city.name %>
