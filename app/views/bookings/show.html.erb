@@ -86,4 +86,12 @@
       </div>
     </div>
   </div>
+
+  <div class="px-auto ml-5">
+  <% unless current_user.host %>
+    <%= link_to new_flat_review_path(@flat, @review) do %>
+      <p class="btn btn-primary review-buton btn-lg">Add Review</i></p>
+    <% end %>
+  <% end %>
+  </div>
 </div>
