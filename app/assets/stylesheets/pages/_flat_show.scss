@@ -8,8 +8,6 @@
   display: block;
 }
 
-
-
 .header {
   background-color: white;
 }
@@ -22,14 +20,13 @@
 }
 
 .flat-name {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .flat-name-text {
   font-size: 32px;
   font-weight: bold;
   color: #485252;
-  margin-top: 10px;
 }
 
 .flat-text {
@@ -169,9 +166,13 @@
 
 .stars-inline p {
   display:inline;
-  color: $blue;
+  color: #28587B;
 }
 
 .m-b-kenn {
   margin-bottom: 90px;
+}
+
+.star {
+  color: #28587B;
 }
