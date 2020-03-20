@@ -20,14 +20,12 @@ class FlatsController < ApplicationController
   def show
     @flats = []
     @flats << Flat.find(params[:id]) #returns flats with coordinates
-    @markers = []
     @markers = @flats.map do |flat|
       {
         lat: flat.latitude,
         lng: flat.longitude
       }
     end
-    raise
   end
 
   def new

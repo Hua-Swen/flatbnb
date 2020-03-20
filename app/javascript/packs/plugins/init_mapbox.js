@@ -16,7 +16,7 @@ const fitMapToMarkers = (map, markers) => {
       style: 'mapbox://styles/mapbox/streets-v10'
     });
 
-    const markers = JSON.parse(mapElement.dataset.markers.);
+    const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
