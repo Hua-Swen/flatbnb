@@ -25,6 +25,7 @@ class FlatsController < ApplicationController
         lng: flat.longitude
       }
     end
+    raise
   end
 
   def new
