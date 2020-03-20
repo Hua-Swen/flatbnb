@@ -52,44 +52,39 @@
 
   <div class="container-fluid">
       <% if @result_arr.present? %>
-      <div class="city-text">
-          <h5>Find your dream place in <%= @queried_city.capitalize %></h5>
-          <p>There are <%= @result_arr.count %> available flats in <%= @queried_city.capitalize %></p>
-      </div>
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-          <div class="carousel-inner row w-100 mx-auto">
-            <% @result_arr.each_with_index do |flat, index| %>
-              <div class="carousel-item col-md-12 <%= index == 0 ? "active" : "" %>">
-                <div class="card-carousel">
-                  <%= cl_image_tag flat.photos[0].key, class: "card-img-top img-height" %>
-                  <div class="card-body">
-                    <div class="city-name">
-                      <%= flat.city.name %>
-                    </div>
-                    <div class="card-title d-flex justify-content-between">
-                      <div> <%= link_to flat.name.capitalize, flat_path(flat)%></div>
-                      <div class="price_per_night"><strong><%= flat.price_per_night %>$</strong>/night
-                      </div>
-                    </div>
-                  </div>
-            <% end %>
-          </div>
-            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only"></span>
-            </a>
-            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only"></span>
-            </a>
+        <div class="city-text">
+            <h5>Showing results for <%= @queried_city.capitalize %></h5>
+            <p>There are <%= @result_arr.count %> available flats in <%= @queried_city.capitalize %></p>
         </div>
+        <% @result_arr.each do |flat| %>
+          <% if flat.photos.empty? %>
+            <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" />
+          <% else %>
+            <%= cl_image_tag flat.photos[0].key, class: "card-img-top img-height" %>
+          <% end %>
+          <div class="d-flex justify-content-between card-trip-infos mb-3">
+            <div class="card-body">
+              <div class="city-name">
+                <%= flat.city.name %>
+              </div>
+              <div class="card-title d-flex justify-content-between">
+                <div>
+                  <%= link_to flat.name.capitalize, flat_path(flat)%>
+                </div>
+                <div class="price_per_night">
+                  <strong><%= flat.price_per_night %>$/night</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
   </div>
 
       <% @results.each do |city_name , flats| %>
           <div class="city-text">
             <h5>Find your dream place in <%= city_name %></h5>
-            <p>There is <%=flats.count%> available flats in <%= city_name %></p>
+            <p>There are <%=flats.count%> available flats in <%= city_name %></p>
           </div>
         <div id="carousel<%= city_name %>" class="carousel slide" data-ride="carousel" data-interval="false">
           <div class="carousel-inner row w-100 mx-auto">
