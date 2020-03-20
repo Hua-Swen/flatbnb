@@ -53,8 +53,8 @@
   <div class="container-fluid">
       <% if @result_arr.present? %>
       <div class="city-text">
-          <h5>Find your dream place in <%= @queried_city %></h5>
-          <p>There are <%= @result_arr.count %> available flats in <%=@queried_city%></p>
+          <h5>Find your dream place in <%= @queried_city.capitalize %></h5>
+          <p>There are <%= @result_arr.count %> available flats in <%= @queried_city.capitalize %></p>
       </div>
         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
           <div class="carousel-inner row w-100 mx-auto">

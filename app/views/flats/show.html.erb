@@ -66,7 +66,7 @@
 
   <div class="sections">
     <div class="d-flex">
-      <i class="fas fa-tools amenity-logo"></i><h1 class="flat-name-text">Amenities</h1>
+      <i class="fas fa-tools amenity-logo"></i><h1 class="flat-name-text section-margin">Amenities</h1>
     </div>
     <div class="row ">
       <% @flat.amenities.each do |amenity| %>
@@ -77,7 +77,7 @@
 
   <div class="sections">
     <div class="d-flex">
-      <i class="fas fa-map-marked-alt amenity-logo"></i><h1 class="flat-name-text">Location</h1>
+      <i class="fas fa-map-marked-alt amenity-logo"></i><h1 class="flat-name-text section-margin">Location</h1>
     </div>
     <p class="flat-text-info"><%= @flat.address_name %></p>
 
@@ -95,7 +95,7 @@
 
    <div class="sections">
     <div class="d-flex">
-      <i class="fas fa-address-card amenity-logo"></i><h1 class="flat-name-text">Your Host</h1>
+      <i class="fas fa-address-card amenity-logo"></i><h1 class="flat-name-text section-margin">Your Host</h1>
     </div>
       <div class="d-flex">
                 <%= cl_image_tag @flat.user.photo.key, class: "avatar-large" %>
@@ -105,7 +105,7 @@
 
     <div class="sections m-b-kenn">
       <div class="d-flex">
-        <i class="fas fa-user-edit amenity-logo"></i><h1 class="flat-name-text">Reviews</h1>
+        <i class="fas fa-user-edit amenity-logo"></i><h1 class="flat-name-text section-margin">Reviews</h1>
         <% unless current_user.host %>
           <%= link_to new_flat_review_path(@flat, @review) do %>
             <p class="btn btn-primary review-buton">Add Review</i></p>
