@@ -39,9 +39,15 @@
 </div>
   <!-- <img class="flat-image" src="https://images.unsplash.com/photo-1565330502541-4937be8552e3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt=""> -->
 <div class="container">
-  <div class="flat-name">
-    <h1 class="flat-name-text"><%= @flat.name.capitalize %></h1>
-  </div>
+
+  <div class="d-flex justify-content-between">
+    <div class="flat-name">
+      <h1 class="flat-name-text"><%= @flat.name.capitalize %></h1>
+    </div>
+
+    <div class="flat-name d-flex">
+      <i class="fas fa-star mb-0 star flat-name mt-2"></i>
+      <p class="flat-name"> <%= @review_average %> (<%= @total_reviews %>)</p> </div> </div>
 
   <div class="flat-name">
     <p class="flat-text">Entire House in <%= @flat.city.name %></p>

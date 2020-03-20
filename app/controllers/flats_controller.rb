@@ -26,6 +26,14 @@ class FlatsController < ApplicationController
         lng: flat.longitude
       }
     end
+
+    @total_reviews = @flat.reviews.length
+    @review_counter = 0.0
+    @flat.reviews.each do |review|
+      @review_counter += review.rating
+    end
+
+    @review_average = (@review_counter / @total_reviews).to_f
   end
 
   def new
