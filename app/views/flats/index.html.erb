@@ -61,7 +61,7 @@
             <% @result_arr.each_with_index do |flat, index| %>
               <div class="carousel-item col-md-12 <%= index == 0 ? "active" : "" %>">
                 <div class="card-carousel">
-                  <%= cl_image_tag flat.photos[0].key, height: 80, class: "card-img-top img-fluid" %>
+                  <%= cl_image_tag flat.photos[0].key, class: "card-img-top img-height" %>
                   <div class="card-body">
                     <div class="city-name">
                       <%= flat.city.name %>
@@ -130,7 +130,7 @@
 
 
 
-
+<div class="spacing"></div>
 
 
 
