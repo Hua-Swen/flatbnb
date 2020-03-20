@@ -32,7 +32,8 @@
         <% end %>
         <div class="card-trip-infos">
             <div>
-              <h2><%= flat.city.name %> <%= link_to flat.name.capitalize, flat_path(flat)%></h2>
+              <h2 id="card-trip-city"><%= flat.city.name %></h2>
+              <h2 id="card-trip-flat"><%= link_to flat.name.capitalize, flat_path(flat)%></h2>
             </div>
               <p class="card-trip-pricing"> <bold><%=flat.price_per_night%> $ </bold> / night </p>
           </div>
