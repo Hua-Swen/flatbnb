@@ -1,8 +1,14 @@
 .flat-image {
   width: 100vw;
-  height: 60vh;
+  height: 50vh;
+  // object-fit: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   display: block;
 }
+
+
 
 .header {
   background-color: white;
@@ -11,8 +17,8 @@
 .back-buton {
   color: black;
   margin-left: 15px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .flat-name {
