@@ -1,20 +1,23 @@
-<div class="container background">
-  <div class="container Header-Border"><h1 class="Review-House-Rules"><strong>Creating Your Flat</strong></h1></div>
-  <div class="container">
-    <%= simple_form_for @flat do |f| %>
-      <%= f.error_notification %>
-      <%= f.input :name %>
-      <%= f.input :type_of_flat %>
-      <%= f.input :address_name %>
-      <%= f.association :city, prompt: "Cities list" %>
-      <%= f.input :description %>
-      <%= f.input :price_per_night %>
-      <%= f.input :number_of_guests %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <!-- got issues with the drop down selection for amenitites, cannot choose more than one amenity -->
-      <%= f.association :amenities, prompt: "Amenities list", include_blank: false, include_hidden: false %>
-      <%= f.button :submit, class: "btn btn-primary font-weight-bold" %>
-    <% end %>
+<div class="background mx-5">
+  <div class="Header-Border text-center">
+    <h1 class="Review-House-Rules"><strong>Creating Your Flat</strong></h1>
   </div>
+
+    <div class="mb-5">
+      <%= simple_form_for @flat do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :name %>
+        <%= f.input :type_of_flat %>
+        <%= f.input :address_name %>
+        <%= f.association :city, prompt: "Cities list" %>
+        <%= f.input :description %>
+        <%= f.input :price_per_night %>
+        <%= f.input :number_of_guests %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <!-- got issues with the drop down selection for amenitites, cannot choose more than one amenity -->
+        <%= f.association :amenities, prompt: "Amenities list", include_blank: false, include_hidden: false %>
+        <%= f.button :submit, class: "btn btn-primary font-weight-bold" %>
+      <% end %>
+    </div>
 </div>
-<div class="spacing"></div>
+

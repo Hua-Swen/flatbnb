@@ -20,6 +20,8 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'omniauth-facebook'
+gem 'figaro'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

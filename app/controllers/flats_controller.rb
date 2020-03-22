@@ -33,7 +33,12 @@ class FlatsController < ApplicationController
       @review_counter += review.rating
     end
 
-    @review_average = (@review_counter / @total_reviews).to_f.round(2)
+    if @review_average
+      @review_average = (@review_counter / @total_reviews).to_f.round(2)
+    else
+      @review_average = 0
+      @total_reviews = 0
+    end
   end
 
   def new
